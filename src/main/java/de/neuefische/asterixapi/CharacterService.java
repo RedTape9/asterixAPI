@@ -43,4 +43,33 @@ public class CharacterService {
     public void deleteCharacter(String id) {
         repo.deleteById(id);
     }
+
+
+    public List<Character> filterByAge(int age) {
+        return repo.findByAge(age);
+    }
+
+    public List<Character> filterByOccupation(String occupation) {
+        return repo.findByOccupation(occupation);
+    }
+
+    public List<Character> getCharactersByAgeAndOccupation(Integer age, String occupation) {
+        if (age != null && occupation != null) {
+            return repo.findByAgeAndOccupation(age, occupation);
+        } else if (age != null) {
+            return repo.findByAge(age);
+        } else if (occupation != null) {
+            return repo.findByOccupation(occupation);
+        } else {
+            return repo.findAll();
+        }
+    }
+
+    public Double getAverageAgeByOccupation(String occupation) {
+        return repo.findAverageAgeByOccupation(occupation);
+    }
+
+
+
+
 }
