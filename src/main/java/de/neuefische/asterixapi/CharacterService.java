@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +20,10 @@ public class CharacterService {
                 .orElseThrow(() -> new RuntimeException("Not Found"));
     }
 
-    public Character saveCharacter(Character character){
-        return repo.save(character);
+    public Character saveCharacter(NewCharacterDTO character){
+        Character newCharacter = new Character(UUID.randomUUID().toString(), character.name(), character.age(), character.occupation());
+
+        return repo.save(newCharacter);
     }
 
     public Character findByName(String name) {

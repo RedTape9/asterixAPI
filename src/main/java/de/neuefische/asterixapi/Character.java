@@ -1,6 +1,5 @@
 package de.neuefische.asterixapi;
 
-import lombok.AllArgsConstructor;
 import lombok.With;
 import org.springframework.data.mongodb.core.mapping.Document;
 
