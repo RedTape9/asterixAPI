@@ -1,5 +1,6 @@
 package de.neuefische.asterixapi;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 @Repository
+
 public interface CharacterRepo extends MongoRepository<Character, String>{
     Optional<Character> findByName(String name);
 

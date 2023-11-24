@@ -10,6 +10,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CharacterService {
     private final CharacterRepo repo;
+    private final IdService idService;
 
     public List<Character> getAllCharacters() {
         return repo.findAll();
@@ -21,7 +22,7 @@ public class CharacterService {
     }
 
     public Character saveCharacter(NewCharacterDTO character){
-        Character newCharacter = new Character(UUID.randomUUID().toString(), character.name(), character.age(), character.occupation());
+        Character newCharacter = new Character(idService.generateId(), character.name(), character.age(), character.occupation());
 
         return repo.save(newCharacter);
     }
